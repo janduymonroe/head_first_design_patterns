@@ -10,11 +10,9 @@ public class HeatDisplay implements Observer, DisplayElement{
         weatherData.registerObserver(this);
     }
 
-
-
-    public void update(float temperature, float humidity, float pressure) {
-        this.temperature = temperature;
-        this.humidity = humidity;
+    public void update() {
+        this.temperature = weatherData.getTemperature();
+        this.humidity = weatherData.getHumidity();
         display();
     }
 
@@ -32,8 +30,8 @@ public class HeatDisplay implements Observer, DisplayElement{
 
     public void display() {
 
-        float indexheat = computeHeatIndex(temperature, humidity);
-        System.out.println("Heat index is: " + indexheat);
+        float indexHeat = computeHeatIndex(temperature, humidity);
+        System.out.println("Heat index is: " + indexHeat);
 
     }
 
